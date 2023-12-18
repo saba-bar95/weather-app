@@ -1,9 +1,7 @@
-import "/assets/index.css";
+import "/src/index.scss";
+import header from "./components/header/header";
+import main from "./components/main/main";
 
-console.log("sss");
-
-const h1 = document.createElement("h1");
-h1.textContent = "header";
-h1.classList.add("header");
-
-document.querySelector("body").appendChild(h1);
+const body = document.querySelector("body");
+body.appendChild(header());
+body.appendChild(main());
