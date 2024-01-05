@@ -1,6 +1,6 @@
-import checkSearchValidity from "./checkSearchValidity.js";
-import getData from "./getData.js";
-import main from "../main/main.js";
+import checkSearchValidity from "../../logic/checkSearchValidity";
+import getData from "../../logic/getData";
+import updateLocation from "../main/update";
 
 export default function header() {
   const div = document.createElement("div");
@@ -42,8 +42,18 @@ export default function header() {
   });
 
   async function setData() {
-    const data = await getData(searchInput.value);
-    main(data);
+    try {
+      const data = await getData(searchInput.value);
+      if (data.error && data.error.code === 1006) {
+        alert(data.error.message);
+        return;
+      }
+      document.querySelector(".container").remove();
+      updateLocation(data);
+    } catch (error) {
+      console.log(error);
+      return;
+    }
   }
 
   return div;

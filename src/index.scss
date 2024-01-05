@@ -1,4 +1,15 @@
 @use "/src/styles/header.scss";
+@use "/src/styles/main.scss";
+
+@font-face {
+  font-family: "Icedrink";
+  src: url("/src/assets/fonts/youngserif.regular.otf");
+}
+
+@font-face {
+  font-family: "Nepoboy";
+  src: url("/src/assets/fonts/Nepoboy-K7Y4Z.ttf");
+}
 
 $body-color: #d1d5db;
 

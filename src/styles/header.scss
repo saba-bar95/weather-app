@@ -1,10 +1,5 @@
 $header-color: linear-gradient(to right, #232526, #414345);
 
-@font-face {
-  font-family: "Icedrink";
-  src: url("/src/assets/fonts/youngserif.regular.otf");
-}
-
 #header-div {
   background: $header-color;
   padding: 30px 20px;
