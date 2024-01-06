@@ -34,6 +34,7 @@ export default function updateLocation(data) {
   upper.appendChild(image);
 
   const temp = document.createElement("p");
+  temp.classList.add("temp-c");
   temp.textContent = data.current.temp_c + "°C";
   upper.appendChild(temp);
 
@@ -54,6 +55,31 @@ export default function updateLocation(data) {
   wind.classList.add("wind");
   wind.textContent = `Wind ${data.current.wind_kph} kph`;
   lower.appendChild(wind);
+
+  const changer = document.createElement("button");
+  changer.textContent = "°C to °F";
+  changer.classList.add("changer");
+  container.appendChild(changer);
+
+  changer.addEventListener("click", function () {
+    if (temp.classList.contains("temp-c")) {
+      temp.textContent = data.current.temp_f + "°F";
+      temp.classList.remove("temp-c");
+      temp.classList.add("temp-f");
+      changer.textContent = "°F to °C";
+      feel.textContent = `Feels like ${data.current.feelslike_f}°F`;
+
+      return;
+    }
+    if (temp.classList.contains("temp-f")) {
+      temp.textContent = data.current.temp_c + "°C";
+      temp.classList.add("temp-c");
+      temp.classList.remove("temp-f");
+      changer.textContent = "°C to °F";
+      feel.textContent = `Feels like ${data.current.feelslike_c}°C`;
+      return;
+    }
+  });
 
   // To update time for every minute
   setInterval(function () {

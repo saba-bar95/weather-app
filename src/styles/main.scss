@@ -3,9 +3,10 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding: 50px;
+    margin: 50px;
     gap: 30px;
     font-family: "Icedrink";
+    position: relative;
 
     .texts {
       display: flex;
@@ -63,6 +64,19 @@
           text-align: center;
         }
       }
+    }
+
+    .changer {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-family: inherit;
+      padding: 8px 16px;
+      border-radius: 12px;
+      outline: none;
+      border: none;
+      background-color: #d97706;
+      cursor: pointer;
     }
   }
 }
