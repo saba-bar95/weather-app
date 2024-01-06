@@ -21,12 +21,46 @@ export default function updateLocation(data) {
   texts.appendChild(time);
   time.textContent = updateTime(data);
 
+  const condition = document.createElement("div");
+  condition.classList.add("condition");
+  container.appendChild(condition);
+
+  const upper = document.createElement("div");
+  upper.classList.add("upper");
+  condition.appendChild(upper);
+
+  const image = new Image();
+  image.src = data.current.condition.icon;
+  upper.appendChild(image);
+
+  const temp = document.createElement("p");
+  temp.textContent = data.current.temp_c + "°C";
+  upper.appendChild(temp);
+
+  const lower = document.createElement("div");
+  lower.classList.add("lower");
+  condition.appendChild(lower);
+
+  const text = document.createElement("p");
+  text.textContent = data.current.condition.text;
+  lower.appendChild(text);
+
+  const feel = document.createElement("p");
+  feel.classList.add("feel");
+  feel.textContent = `Feels like ${data.current.feelslike_c}°C`;
+  lower.appendChild(feel);
+
+  const wind = document.createElement("p");
+  wind.classList.add("wind");
+  wind.textContent = `Wind ${data.current.wind_kph} kph`;
+  lower.appendChild(wind);
+
   // To update time for every minute
   setInterval(function () {
     getData(data.location.name).then((data) => {
       time.textContent = updateTime(data);
     });
-  }, 5000);
+  }, 60000);
 }
 
 function updateTime(data) {
@@ -43,10 +77,13 @@ function updateTime(data) {
   const year = date.toLocaleString("en-US", {
     year: "numeric",
   });
-  const hour = date.getHours();
+  const getHour = date.getHours();
   const getMinutes = date.getMinutes();
 
-  let minute;
+  let hour, minute;
+  if (getHour < 12) {
+    hour = "0" + getHour;
+  } else hour = getHour;
   if (getMinutes < 10) {
     minute = "0" + getMinutes;
   } else minute = getMinutes;
