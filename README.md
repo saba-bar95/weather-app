@@ -9,7 +9,7 @@ Weather application used to show forecast from [Weather API](https://www.weather
 #### Technologies
 
 - HTML
-- CSS
+- SCSS
 - JavaScript
 
 #### Tools
